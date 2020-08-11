@@ -13,12 +13,21 @@
   padding-top:30px;
   padding-bottom:30px;
   width: 500px;
+  outline: none;
 
-  transition: 0.2s;
+  transition: .2s;
+
+  border: 2px solid transparent;
 }
 
 .signinButton:hover{
-  background-color: #505a7a/*606c91;*/
+  background-color: #444d69;/*606c91*/
+}
+.signinButton:focus{
+  border: 2px solid #2f6fad;/*2e77bf;/*2e86de*/
+}
+.signinButton:active{
+  background-color: #505a7a;
 }
 
 .helpButton{

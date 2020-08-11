@@ -1,16 +1,20 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+//import ApiCalendar from 'react-google-calendar-api';
 import './styling/App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p className="landingPrompt">you should be ...</p>
-        <button className="signinButton">signing in with google</button>
-        <button className="helpButton">wait what is this?</button>
-      </header>
-    </div>
-  );
+import HomePage from './pages/Home';
+import ViewPage from './pages/View';
+
+class App extends React.Component {
+  render(){
+    return (
+      <Router>
+        <Route exact path="/" component={HomePage}/>
+        <Route exact path="/view" component={ViewPage}/>
+      </Router>
+    );
+  }
 }
 
 export default App;
