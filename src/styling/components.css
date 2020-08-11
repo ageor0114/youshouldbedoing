@@ -1,0 +1,45 @@
+.landingPrompt{
+  margin-bottom: 20px;
+}
+
+.signinButton{
+  color: white;
+  font-size: 30px;
+  font-family: 'Inter';
+  font-weight: 700;
+  background-color: #32384B;
+  border-radius: 5px;
+  border: none;
+  padding-top:30px;
+  padding-bottom:30px;
+  width: 500px;
+
+  transition: 0.2s;
+}
+
+.signinButton:hover{
+  background-color: #505a7a/*606c91;*/
+}
+
+.helpButton{
+  color: #32384B;
+  background-color: Transparent;
+  border: none;
+  font-size: 24px;
+  font-family: 'Inter';
+  font-weight: 700;
+
+  position: fixed; /*or absolute ONLY bc parent is 100vh*/
+  bottom: 10vh;
+}
+@media only screen and (max-width: 520px) {
+  .signinButton{
+    width: 80vw;
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  .signinButton{
+      font-size:25px;
+  }
+}

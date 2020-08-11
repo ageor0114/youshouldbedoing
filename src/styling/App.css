@@ -1,0 +1,17 @@
+@import "./components.css";
+@import "./fonts.css";
+
+.App {
+  text-align: center;
+}
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /*Horizontally Center*/
+  justify-content: center; /*Vertically center*/
+
+  background-color: #171A23;
+  min-height: 100vh;
+  /*calc(10px + 2vmin);*/
+  color: white;
+}
