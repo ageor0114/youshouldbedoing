@@ -29,16 +29,6 @@ class View extends React.Component {
           var newEvent = result.items[0].summary;
           this.setState({event:newEvent});
         });
-
-    /*ajaxVar
-      .get('https://domain')
-      .then(result => {
-        if (this._mounted) {
-          this.setState({
-            news: result.data.hits,
-          });
-        }
-      });*/
   }
 
   componentWillUnmount(){

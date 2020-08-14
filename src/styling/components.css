@@ -41,6 +41,14 @@
   position: fixed; /*or absolute ONLY bc parent is 100vh*/
   bottom: 10vh;
 }
+
+.time{
+  color: #32384B;
+}
+
+.remaining{
+  color: #32384B;
+}
 @media only screen and (max-width: 520px) {
   .signinButton{
     width: 80vw;
