@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router';
+//import { Redirect } from 'react-router';
 import ApiCalendar from 'react-google-calendar-api';
 import '../styling/App.css';
 
@@ -32,7 +32,7 @@ class Home extends React.Component {
     //ApiCalendar.handleSignoutClick();
 
     console.log("X: " + this.state.sign);
-    if (this.state.sign == false) ApiCalendar.handleAuthClick();
+    if (this.state.sign === false) ApiCalendar.handleAuthClick();
     console.log("Y: " + this.state.sign);
     /*if (ApiCalendar.sign)
       ApiCalendar.listUpcomingEvents(1)
