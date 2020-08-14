@@ -4,11 +4,12 @@ import ApiCalendar from 'react-google-calendar-api';
 import '../styling/App.css';
 
 class Home extends React.Component {
+  _mounted = false;
   constructor(props) {
     super(props);
 
     this.state = {
-      event: "Event Goes Here",
+      event: "⠀",
       loggedIn:false,
       sign: ApiCalendar.sign
     };
@@ -19,6 +20,36 @@ class Home extends React.Component {
             });
     this.signin = this.signin.bind(this);
     this.signout = this.signout.bind(this);
+  }
+
+  componentDidMount(){
+    console.log("COMPONENT DID MOUNT");
+    this._mounted = true;
+
+    if (ApiCalendar.sign)
+      ApiCalendar.listUpcomingEvents(1)
+        .then(({result}: any) => {
+          console.log(result.items);
+          console.log("SUMMARY: " + result.items[0].summary);
+          var newEvent = result.items[0].summary;
+          this.setState({event:newEvent});
+        });
+  }
+
+  componentWillUnmount(){
+    this._mounted = false;
+  }
+
+  componentDidUpdate(){
+    console.log("COMPONENT DID UPDATE");
+    if (ApiCalendar.sign)
+      ApiCalendar.listUpcomingEvents(1)
+        .then(({result}: any) => {
+          console.log(result.items);
+          console.log("SUMMARY: " + result.items[0].summary);
+          var newEvent = result.items[0].summary;
+          this.setState({event:newEvent});
+        });
   }
 
   signUpdate(sign: boolean): any {
