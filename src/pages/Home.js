@@ -8,6 +8,7 @@ class Home extends React.Component {
     super(props);
 
     this.state = {
+      //event: "Event Goes Here",
       loggedIn:false,
       sign: ApiCalendar.sign
     };
@@ -17,6 +18,7 @@ class Home extends React.Component {
                 ApiCalendar.listenSign(this.signUpdate);
             });
     this.signin = this.signin.bind(this);
+    this.signout = this.signout.bind(this);
   }
 
   signUpdate(sign: boolean): any {
@@ -42,6 +44,11 @@ class Home extends React.Component {
     console.log("just signed in");
 
     //while(!ApiCalendar.sign) console.log("boop");
+  }
+
+  signout = () => {
+    this.setState({loggedIn:false});
+    ApiCalendar.handleSignoutClick();
   }
 
   redirect = () => {
@@ -70,22 +77,19 @@ class Home extends React.Component {
       ApiCalendar.listenSign(ApiCalendar.sign);
     });
     loadClientWhenGapiReady(100);
-  };
-
-  handleItemClick = (event, name) => {
-    event.preventDefault();
-    if (name === 'sign-in') {
-      loadSingIn();
-      ApiCalendar.handleAuthClick();
-    } else if (name === 'sign-out') {
-      ApiCalendar.handleSignoutClick();
-    }
   };*/
 
   render(){
     if (/*this.state.loggedIn*/ApiCalendar.sign) {
       console.log("time to show view")
-      return <Redirect push to="/view" />;
+      //<Redirect push to="/view" />
+      return (
+        <div className="App">
+          <p className="landingPrompt">you should be doing ...</p>
+          <h1>Event Goes Here</h1>
+          <button onClick={this.signout}>Sign Out</button>
+        </div>
+      );
     }
 
     return (
@@ -109,7 +113,7 @@ class Home extends React.Component {
         <p className="landingPrompt">you should be ...</p>
         <button onClick={this.signin} className="signinButton">signing in with google</button>
         {/*<button onClick={e => handleItemClick(e, 'sign-in')}>SIGNING IN WITH GOOGLE</button>*/}
-        <button onClick={this.redirect}>Redirect</button>
+        {/*<button onClick={this.redirect}>Redirect</button>*/}
         <button className="helpButton">wait what is this?</button>
       </header>
     );
