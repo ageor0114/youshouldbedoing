@@ -10,6 +10,7 @@ class Home extends React.Component {
 
     this.state = {
       event: "⠀",
+      color: "color-0",
       loggedIn:false,
       sign: ApiCalendar.sign
     };
@@ -32,7 +33,9 @@ class Home extends React.Component {
           console.log(result.items);
           console.log("SUMMARY: " + result.items[0].summary);
           var newEvent = result.items[0].summary;
+          var newColor = "color-" + result.items[0].colorId;
           this.setState({event:newEvent});
+          this.setState({color:newColor})
         });
   }
 
@@ -49,6 +52,8 @@ class Home extends React.Component {
           console.log("SUMMARY: " + result.items[0].summary);
           var newEvent = result.items[0].summary;
           this.setState({event:newEvent});
+          var newColor = "color-" + result.items[0].colorId;
+          this.setState({color:newColor});
         });
   }
 
@@ -109,16 +114,17 @@ class Home extends React.Component {
 
   render(){
     if (/*this.state.loggedIn*/ApiCalendar.sign) {
-      console.log("time to show view")
+      console.log("time to show view");
+      console.log("COLOR TIME: " + this.state.color);
       //<Redirect push to="/view" />
       return (
-        <div className="App">
-          <p className="landingPrompt">you should be doing ...</p>
-          <h1>{this.state.event}</h1>
+        <div id={this.state.color} className="App">
+          <p className="prompt">you should be doing ...</p>
+          <h1 className="event">{this.state.event}</h1>
           <h2 className="time">55:59</h2>
-          <p className="remaining">Remaining</p>
-          <h1>Now go f*cking do it</h1>
-          <button onClick={this.signout}>Sign Out</button>
+          <p className="remaining">remaining</p>
+          <h1 className="event">Now go f*cking do it.</h1>
+          <button className="signoutButton" onClick={this.signout}>Sign Out</button>
         </div>
       );
     }
@@ -141,7 +147,7 @@ class Home extends React.Component {
           </div>
         )}
         */}
-        <p className="landingPrompt">you should be ...</p>
+        <p className="prompt">you should be ...</p>
         <button onClick={this.signin} className="signinButton">signing in with google</button>
         <button onClick={this.signout}>SignOut</button>
         {/*<button onClick={e => handleItemClick(e, 'sign-in')}>SIGNING IN WITH GOOGLE</button>*/}

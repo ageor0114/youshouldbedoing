@@ -1,5 +1,5 @@
-.landingPrompt{
-  margin-bottom: 20px;
+.prompt{
+  margin-bottom: 10px;
 }
 
 .signinButton{
@@ -8,7 +8,7 @@
   font-family: 'Inter';
   font-weight: 700;
   background-color: #32384B;
-  border-radius: 5px;
+  border-radius: 10px;
   border: none;
   padding-top:30px;
   padding-bottom:30px;
@@ -42,12 +42,23 @@
   bottom: 10vh;
 }
 
+.event{
+  font-size: 60px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 .time{
-  color: #32384B;
+  opacity: 0.15;
+  font-size: 100px;
+  margin-top:20px;
+  margin-bottom: 0px;
 }
 
 .remaining{
-  color: #32384B;
+  //color: #32384B;
+  opacity: 0.15;
+  margin-top:0px;
+  margin-bottom: 20px;
 }
 @media only screen and (max-width: 520px) {
   .signinButton{

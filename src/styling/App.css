@@ -1,4 +1,6 @@
 @import "./components.css";
+@import "./buttons.css";
+@import "./colors.css";
 @import "./fonts.css";
 
 .App {

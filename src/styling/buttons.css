@@ -1,0 +1,28 @@
+.signoutButton{
+  color: white;
+  font-family: 'Inter';
+  font-weight: 600;
+  background-color: rgba(255,255,255,.1);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  padding: 10px 10px 10px 10px;
+  outline: none;
+
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+
+  transition: .2s;
+}
+
+.signoutButton:hover{
+  background-color: rgba(255,255,255,.3);
+}
+
+.signoutButton:focus{
+  border: 2px solid white;
+}
+
+.signoutButton:active{
+  background-color: rgba(255,255,255,.4);
+}
