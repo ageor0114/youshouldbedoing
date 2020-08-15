@@ -20,3 +20,14 @@ p{
   font-weight: 500;
   white-space: pre-line;
 }
+
+@media only screen and (max-width: 435px) {
+  .modal h1{
+    font-size: 25px;
+  }
+  .modal p{
+    font-size: 14px;
+    font-weight: 500;
+    white-space: pre-line;
+  }
+}

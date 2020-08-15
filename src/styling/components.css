@@ -1,7 +1,7 @@
 .modal{
   background: #32384B;
   text-align:left;
-  width: 460px;
+  max-width: 460px;
   padding: 30px 30px 30px 30px;
   border-radius: 4px;
 }
@@ -79,7 +79,11 @@
     width: 80vw;
   }
 }
-
+@media only screen and (max-width: 435px) {
+  .modal{
+    max-width: 290px;
+  }
+}
 @media only screen and (max-width: 430px) {
   .signinButton{
       font-size:25px;
