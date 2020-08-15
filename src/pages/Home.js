@@ -1,5 +1,9 @@
 import React from 'react';
 import ApiCalendar from 'react-google-calendar-api';
+import { Link } from 'react-router-dom';
+import Modal from 'react-awesome-modal';
+import xButton from '../images/x-button.png';
+
 import '../styling/App.css';
 
 class Home extends React.Component {
@@ -10,8 +14,9 @@ class Home extends React.Component {
     this.state = {
       event: "⠀",
       color: "color-0",
+      visible: false,
       loggedIn:false,
-      sign: ApiCalendar.sign
+      sign: ApiCalendar.sign,
     };
 
     this.signUpdate = this.signUpdate.bind(this);
@@ -81,7 +86,18 @@ class Home extends React.Component {
     this.setState({loggedIn:true})
   }
 
+  openModal(){
+    this.setState({visible:true});
+  }
+
+  closeModal(){
+    this.setState({visible:false});
+  }
+
   render(){
+    const desc = "is the one-stop backdrop to your productive life! it seamlessly connects to your existing workflow in Google Calendar, and neatly presents your current and upcoming tasks in a full-window view — with a timer to tell you how much time remains for the current task.\n\nwhen you connect your account, youshouldbedoing.com only displays calendar content and never makes any edits/changes to your calendar. you can check out the full ";
+    const message = "\nhappy productive-ing! now get some f*cking work done.\n⠀";
+    const request = "\nif this site helps you at all, or you have any suggestions to make it better, i’d really appreciate your ";
     if (/*this.state.loggedIn*/ApiCalendar.sign) {
       console.log("time to show view");
       console.log("COLOR TIME: " + this.state.color);
@@ -103,7 +119,19 @@ class Home extends React.Component {
         <p className="prompt">you should be ...</p>
         <button onClick={this.signin} className="signinButton">signing in with google</button>
         <button className="signoutButton" onClick={this.signout}>SignOut</button>
-        <button className="helpButton"><p className="helpText">wait what is this?</p></button>
+        <button className="helpButton" onClick={() => this.openModal()}><p className="helpText">wait what is this?</p></button>
+        <Modal visible={this.state.visible} effect="fadeInUp" onClickAway={() => this.closeModal()}>
+          <div className="modal">
+            <button onClick={() => this.closeModal()}>
+              <img src={xButton} className="xButton" alt="Close" />
+            </button>
+            <h1>youshouldbedoing.com</h1>
+            <p>{desc}<Link className="hyperlink" to="/privacy">Privacy Policy</Link> here and the <a href="https://github.com/ageor0114/youshouldbedoing" target="_blank" rel="noopener noreferrer" className="hyperlink">source code</a> to this site!</p>
+            <p>{request}<a href="https://austingeorge.dev" target="_blank" rel="noopener noreferrer" className="hyperlink">feedback</a>! every comment helps :)</p>
+            <p>{message}</p>
+            <p className="signature">- austin</p>
+          </div>
+        </Modal>
       </header>
     );
   }

@@ -65,3 +65,59 @@ HELP BUTTON
 .helpButton:focus{
   outline:none;
 }
+
+/*
+=================
+HELP BUTTON
+=================
+*/
+
+.returnButton{
+  color: white;
+  background: #32384B;
+  float: right;
+  margin-top: 30px;
+  margin-right: 20px;
+  padding: 10px 20px 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: .2s;
+  border: 2px solid transparent;
+}
+.returnButton:hover{
+  background-color: #444d69;
+  cursor: pointer;
+}
+.returnButton:focus{
+  border: 2px solid #2f6fad;
+}
+.returnButton:active{
+  background-color: #505a7a;
+}
+
+/*
+=================
+HYPERLINK
+=================
+*/
+
+.hyperlink{
+  color: #3498db;
+}
+
+.hyperlink:hover{
+  color: #54a0ff;
+}
+
+.hyperlink:active{
+  color: #54bdff;
+}
+
+.modal button{
+  background-color: Transparent;
+  border: none;
+}
+
+.modal button:focus{
+  outline:none;
+}

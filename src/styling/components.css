@@ -1,3 +1,27 @@
+.modal{
+  background: #32384B;
+  text-align:left;
+  width: 460px;
+  padding: 30px 30px 30px 30px;
+  border-radius: 4px;
+}
+
+.xButton{
+  width: 20px;
+  height: 20px;
+  position:fixed;
+  top:10px;
+  right:10px;
+}
+
+.xButton:hover{
+  opacity: .7;
+}
+
+.signature{
+  text-align: right;
+}
+
 .prompt{
   margin-bottom: 10px;
 }

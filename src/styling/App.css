@@ -15,3 +15,10 @@
   /*calc(10px + 2vmin);*/
   color: white;
 }
+
+.privacy{
+  max-width: 600px;
+  text-align:left;
+  background-color: #171A23;
+  color: white;
+}

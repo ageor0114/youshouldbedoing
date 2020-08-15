@@ -5,6 +5,7 @@ import './styling/App.css';
 
 import HomePage from './pages/Home';
 import ViewPage from './pages/View';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 class App extends React.Component {
   render(){
@@ -12,6 +13,7 @@ class App extends React.Component {
       <Router>
         <Route exact path="/" component={HomePage}/>
         <Route exact path="/view" component={ViewPage}/>
+        <Route exact path="/privacy" component={PrivacyPolicy}/>
       </Router>
     );
   }
