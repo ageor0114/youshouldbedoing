@@ -1,3 +1,10 @@
+
+/*
+=================
+SIGN OUT BUTTON
+=================
+*/
+
 .signoutButton{
   color: white;
   font-family: 'Inter';
@@ -17,6 +24,7 @@
 
 .signoutButton:hover{
   background-color: rgba(255,255,255,.3);
+  cursor: pointer;
 }
 
 .signoutButton:focus{
@@ -25,4 +33,35 @@
 
 .signoutButton:active{
   background-color: rgba(255,255,255,.4);
+}
+
+/*
+=================
+HELP BUTTON
+=================
+*/
+
+.helpButton{
+  color: #32384B;
+  background-color: Transparent;
+  border: none;
+  font-size: 24px;
+  font-family: 'Inter';
+  font-weight: 700;
+
+  position: fixed; /*or absolute ONLY bc parent is 100vh*/
+  bottom: 10vh;
+}
+
+.helpButton:hover{
+  color:#444d69;
+  cursor: pointer;
+}
+
+.helpButton:active{
+  color:#505a7a;
+}
+
+.helpButton:focus{
+  outline:none;
 }
