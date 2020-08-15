@@ -95,7 +95,8 @@ class Home extends React.Component {
   }
 
   render(){
-    const desc = "is the one-stop backdrop to your productive life! it connects to your existing workflow in Google Calendar, and neatly presents your current and upcoming tasks in a full-window view — with a timer to tell you how much time remains for the current task.\n\nwhen you connect your account, youshouldbedoing.com only displays calendar content and never makes any edits/changes to your calendar. you can check out the full ";
+    const desc1 = "is the one-stop backdrop to your productive life! it connects to your existing workflow in Google Calendar, and neatly presents your current and upcoming tasks in a full-window view — with a timer to tell you how much time remains for the current task.\n\nwhen you connect your account, ";
+    const desc2 = " and never makes any changes to your calendar. you can check out the full ";
     const message = "\nhappy productive-ing! now get some f*cking work done.\n⠀";
     const request = "\nif this site helps you at all, or you have any suggestions to make it better, i’d really appreciate your ";
     if (/*this.state.loggedIn*/ApiCalendar.sign) {
@@ -126,7 +127,7 @@ class Home extends React.Component {
               <img src={xButton} className="xButton" alt="Close" />
             </button>
             <h1>youshouldbedoing.com</h1>
-            <p>{desc}<Link className="hyperlink" to="/privacy">Privacy Policy</Link> here and the <a href="https://github.com/ageor0114/youshouldbedoing" target="_blank" rel="noopener noreferrer" className="hyperlink">source code</a> to this site!</p>
+            <p>{desc1}<b>youshouldbedoing.com</b> uses <b>view-only access</b>{desc2}<Link className="hyperlink" to="/privacy">Privacy Policy</Link> here and the <a href="https://github.com/ageor0114/youshouldbedoing" target="_blank" rel="noopener noreferrer" className="hyperlink">source code</a> to this site!</p>
             <p>{request}<a href="https://austingeorge.dev" target="_blank" rel="noopener noreferrer" className="hyperlink">feedback</a>! every comment helps :)</p>
             <p>{message}</p>
             <p className="signature">- austin</p>
