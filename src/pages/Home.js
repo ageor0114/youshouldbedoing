@@ -95,7 +95,7 @@ class Home extends React.Component {
   }
 
   render(){
-    const desc = "is the one-stop backdrop to your productive life! it seamlessly connects to your existing workflow in Google Calendar, and neatly presents your current and upcoming tasks in a full-window view — with a timer to tell you how much time remains for the current task.\n\nwhen you connect your account, youshouldbedoing.com only displays calendar content and never makes any edits/changes to your calendar. you can check out the full ";
+    const desc = "is the one-stop backdrop to your productive life! it connects to your existing workflow in Google Calendar, and neatly presents your current and upcoming tasks in a full-window view — with a timer to tell you how much time remains for the current task.\n\nwhen you connect your account, youshouldbedoing.com only displays calendar content and never makes any edits/changes to your calendar. you can check out the full ";
     const message = "\nhappy productive-ing! now get some f*cking work done.\n⠀";
     const request = "\nif this site helps you at all, or you have any suggestions to make it better, i’d really appreciate your ";
     if (/*this.state.loggedIn*/ApiCalendar.sign) {
