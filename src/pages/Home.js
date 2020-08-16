@@ -37,7 +37,7 @@ class Home extends React.Component {
     this._mounted = true;
 
     this.loadData();
-    setInterval(this.loadData,200);
+    setInterval(this.loadData,250);
 
     /*var hours = new Date().getHours();
     var min = new Date().getMinutes();
