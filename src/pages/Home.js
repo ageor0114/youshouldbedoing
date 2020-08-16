@@ -50,7 +50,7 @@ class Home extends React.Component {
     this.updateMotivation();
 
     this.loadData();
-    setInterval(this.loadData,200);
+    setInterval(this.loadData,250);
 
     /*var hours = new Date().getHours();
     var min = new Date().getMinutes();
