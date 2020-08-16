@@ -3,7 +3,7 @@ import ApiCalendar from 'react-google-calendar-api';
 import { Link } from 'react-router-dom';
 import Modal from 'react-awesome-modal';
 import xButton from '../images/x-button.png';
-
+import Data from '../data';
 import '../styling/App.css';
 
 class Home extends React.Component {
@@ -19,6 +19,8 @@ class Home extends React.Component {
       sign: ApiCalendar.sign,
       currTime: 0,
       timer: "",
+      motivation:"",
+      cake:false,
     };
 
     this.signUpdate = this.signUpdate.bind(this);
@@ -30,11 +32,22 @@ class Home extends React.Component {
     this.absReactTime = this.absReactTime.bind(this);
     this.absGoogleTime = this.absGoogleTime.bind(this);
     this.loadData = this.loadData.bind(this);
+    this.updateMotivation = this.updateMotivation.bind(this);
+  }
+
+  updateMotivation(){
+    //Update state
+    var index = Math.floor(Math.random() * Data.motivation.length);
+    this.setState({motivation:Data.motivation[index]});
+
+    //Cake Is A Lie
+    if (index === 0) this.setState({cake:true});
+    else this.setState({cake:false});
   }
 
   componentDidMount(){
-    console.log("COMPONENT DID MOUNT");
     this._mounted = true;
+    this.updateMotivation();
 
     this.loadData();
     setInterval(this.loadData,200);
@@ -172,7 +185,9 @@ class Home extends React.Component {
           <h1 className="event">{this.state.event}</h1>
           <h2 className="time">{this.state.timer}</h2>
           <p className="remaining">remaining</p>
-          <h1 className="event">Now go f*cking do it.</h1>
+          <h1 className="event">{this.state.motivation}</h1>
+          {this.state.cake && <p className="disclaimer">*the cake is a lie</p>}
+          <button className="refreshButton" onClick={this.updateMotivation}>⟳</button>
           <button className="signoutButton" onClick={this.signout}>Sign Out</button>
         </div>
       );
@@ -182,7 +197,7 @@ class Home extends React.Component {
       <header className="App">
         <p className="prompt">you should be ...</p>
         <button onClick={this.signin} className="signinButton">signing in with google</button>
-        <button className="signoutButton" onClick={this.signout}>SignOut</button>
+        {/*<button className="signoutButton" onClick={this.signout}>SignOut</button>*/}
         <button className="helpButton" onClick={() => this.openModal()}><p className="helpText">wait what is this?</p></button>
         <Modal visible={this.state.visible} effect="fadeInUp" onClickAway={() => this.closeModal()}>
           <div className="modal">

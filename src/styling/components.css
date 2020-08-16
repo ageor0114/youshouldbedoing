@@ -77,6 +77,14 @@
   margin-bottom: 30px;
   //font-family: 'Share Tech Mono','Roboto Mono', monospace;
 }
+
+.disclaimer{
+  position:fixed;
+  font-size: 15px;
+  font-weight: 600;
+  bottom: 10px;
+  left: 10px;
+}
 @media only screen and (max-width: 520px) {
   .signinButton{
     width: 80vw;
