@@ -36,7 +36,7 @@ class Home extends React.Component {
     this._mounted = true;
 
     this.loadData();
-    setInterval(this.loadData,1000);
+    setInterval(this.loadData,200);
 
     /*var hours = new Date().getHours();
     var min = new Date().getMinutes();
@@ -58,14 +58,16 @@ class Home extends React.Component {
       var min = new Date().getMinutes();
       var sec = new Date().getSeconds();
       var currTotal = 3600*hours + 60*min + sec;
+      console.log("BREAKDOWN: " + hours + ":" + min + ":" + sec);
+      //console.log("TOTAL: " + currTotal);
       this.setState({currTime:currTotal});
 
       //UPDATE CALENDAR
       if (ApiCalendar.sign)
         ApiCalendar.listUpcomingEvents(1)
           .then(({result}: any) => {
-            console.log(result.items);
-            console.log("SUMMARY: " + result.items[0].summary);
+            //console.log(result.items);
+            //console.log("SUMMARY: " + result.items[0].summary);
             var newEvent = result.items[0].summary;
             var newColor = "color-" + result.items[0].colorId;
             this.setState({event:newEvent});
@@ -165,8 +167,8 @@ class Home extends React.Component {
     const message = "\nhappy productive-ing! now get some f*cking work done.\n⠀";
     const request = "\nif this site helps you at all, or you have any suggestions to make it better, i’d really appreciate your ";
     if (/*this.state.loggedIn*/ApiCalendar.sign) {
-      console.log("time to show view");
-      console.log("COLOR TIME: " + this.state.color);
+      //console.log("time to show view");
+      //console.log("COLOR TIME: " + this.state.color);
       //<Redirect push to="/view" />
       return (
         <div id={this.state.color} className="App">
