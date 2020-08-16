@@ -64,15 +64,18 @@
 .time{
   opacity: 0.15;
   font-size: 100px;
-  margin-top:20px;
+  margin-top:30px;
   margin-bottom: 0px;
+  font-family: 'Share Tech Mono','Roboto Mono', monospace;
+  font-weight: 700;
 }
 
 .remaining{
   //color: #32384B;
   opacity: 0.15;
   margin-top:0px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  //font-family: 'Share Tech Mono','Roboto Mono', monospace;
 }
 @media only screen and (max-width: 520px) {
   .signinButton{

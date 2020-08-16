@@ -18,6 +18,7 @@ class Home extends React.Component {
       loggedIn:false,
       sign: ApiCalendar.sign,
       currTime: 0,
+      timer: "",
     };
 
     this.signUpdate = this.signUpdate.bind(this);
@@ -51,6 +52,24 @@ class Home extends React.Component {
 
   }
 
+  absGoogleTime(time) {
+    var hours = parseInt(time.substring(11,13));
+  	var min = parseInt(time.substring(14,16));
+  	var sec = parseInt(time.substring(17,19));
+    var total = hours*3600+ min*60 + sec;
+    return total;
+  }
+
+  format(seconds){
+    var hours = Math.floor(seconds / 3600);
+    var min = Math.floor((seconds - hours*3600) / 60);
+    var sec = seconds - hours*3600 - min*60;
+    if (min < 10) min = "0" + min;
+    if (sec < 10) sec = "0" + sec;
+    if (hours === 0) return (min + ":" + sec);
+    else return (hours + ":" + min + ":" + sec);
+  }
+
   async loadData(){
     try {
       //UPDATE TIME
@@ -58,8 +77,8 @@ class Home extends React.Component {
       var min = new Date().getMinutes();
       var sec = new Date().getSeconds();
       var currTotal = 3600*hours + 60*min + sec;
-      console.log("BREAKDOWN: " + hours + ":" + min + ":" + sec);
-      //console.log("TOTAL: " + currTotal);
+      //console.log("BREAKDOWN: " + hours + ":" + min + ":" + sec);
+      console.log("TOTAL CUR: " + currTotal);
       this.setState({currTime:currTotal});
 
       //UPDATE CALENDAR
@@ -68,10 +87,21 @@ class Home extends React.Component {
           .then(({result}: any) => {
             //console.log(result.items);
             //console.log("SUMMARY: " + result.items[0].summary);
+
+            //Update Event Name & Color
             var newEvent = result.items[0].summary;
             var newColor = "color-" + result.items[0].colorId;
             this.setState({event:newEvent});
-            this.setState({color:newColor})
+            this.setState({color:newColor});
+
+            //Update Time
+            var currEnd = this.absGoogleTime(result.items[0].end.dateTime);
+            var currDelta = currEnd - currTotal;
+            console.log("TOTAL END: " + currEnd);
+            console.log("TOTAL DEL: " + currDelta);
+            var currTimer = this.format(currDelta);
+            console.log("FORMT DEL: " + currTimer);
+            this.setState({timer:currTimer});
           });
     } catch (e) {
       console.log("======ERROR======");
@@ -84,48 +114,14 @@ class Home extends React.Component {
   }
 
   componentDidUpdate(){
-    /*if (this.state.currTime == 0)
-    {
-      if (ApiCalendar.sign)
-        ApiCalendar.listUpcomingEvents(1)
-          .then(({result}: any) => {
-            console.log(result.items);
-            console.log("SUMMARY: " + result.items[0].summary);
-            var newEvent = result.items[0].summary;
-            this.setState({event:newEvent});
-            var newColor = "color-" + result.items[0].colorId;
-            this.setState({color:newColor});
-          });
-    }*/
 
-    /*console.log("COMPONENT DID UPDATE");
-    var hours = new Date().getHours();
-    var min = new Date().getMinutes();
-    var sec = new Date().getSeconds();
-    var currTotal = 3600*hours + 60*min + sec;
-    console.log("CURR TOTAL: " + currTotal);*/
-
-    //Update Time & Query GCal Once Every Second
-
-    /*if (currTotal != this.state.currTime)
-    {
-      this.setState({currTime:currTotal});
-      console.log("UPDATED TIME: " + this.state.currTime);
-    }*/
-
-    /*if (this.state.currTime % 10 == 0)
-    {
-      //Insert Data Fetching Code Block
-    }*/
   }
 
   absReactTime = (time) => {
     return 4;
   }
 
-  absGoogleTime = (time) => {
-    return 3;
-  }
+
 
 
   signUpdate(sign: boolean): any {
@@ -174,9 +170,8 @@ class Home extends React.Component {
         <div id={this.state.color} className="App">
           <p className="prompt">you should be doing ...</p>
           <h1 className="event">{this.state.event}</h1>
-          <h2 className="time">55:59</h2>
+          <h2 className="time">{this.state.timer}</h2>
           <p className="remaining">remaining</p>
-          <h1>Curr Time: {this.state.currTime}</h1>
           <h1 className="event">Now go f*cking do it.</h1>
           <button className="signoutButton" onClick={this.signout}>Sign Out</button>
         </div>
